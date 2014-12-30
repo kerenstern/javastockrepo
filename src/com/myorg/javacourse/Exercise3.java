@@ -20,7 +20,7 @@ public class Exercise3 extends HttpServlet {
 //		Calculation 1
 
 		int radius = 50;
-		double area = Math.PI * radius * radius;
+		double area = Math.PI * (double) radius * (double) radius;
 		String circleAreaString = new String(
 				"Calculation 1: Area of circle with radius " + radius
 						+ "cm is: " + area + " square-cm");
@@ -30,7 +30,7 @@ public class Exercise3 extends HttpServlet {
 		int angleB = 30;
 		int hypotenuse = 50;
 		double angleBRadians = Math.toRadians(angleB);
-		double oppositeLength = Math.sin(angleBRadians) * hypotenuse;
+		double oppositeLength = Math.sin(angleBRadians) * (double) hypotenuse;
 		String oppositeLengthString = new String(
 				"Calculation 2: Length of opposite where angle B is: " + angleB + "degrees and Hypotenuse length is " + hypotenuse + " cm is: "
 						+ oppositeLength + "cm");
