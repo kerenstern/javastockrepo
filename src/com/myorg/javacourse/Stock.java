@@ -1,18 +1,19 @@
 package com.myorg.javacourse;
 import java.text.SimpleDateFormat;
+import java.util.Calendar;
 
 public class Stock {
 	private String symbol;
 	private float ask;
 	private float bid;	
-	java.util.Date date;
-	String DateToStr;
+	private java.util.Calendar date;
+	private String DateToStr;
 	
-	public Stock(String symbol, float ask, float bid, java.util.Date date) {
+	public Stock(String symbol, float ask, float bid, Long dateModified) {
 		setSymbol(symbol);
 		setAsk(ask);
 		setBid(bid);		
-		setDate(date);
+		setDate(dateModified);
 	}
 
 	private String getSymbol() {
@@ -41,12 +42,14 @@ public class Stock {
 
 	public String getDate() {
 		SimpleDateFormat dateFormat = new SimpleDateFormat("MM/dd/yyyy");
-		DateToStr = dateFormat.format(date);
+		DateToStr = dateFormat.format(this.date.getTime());
 		return DateToStr;
 	}
 
-	public void setDate(java.util.Date date) {
-		this.date = date;
+	public void setDate(Long dateModified) {
+		Calendar newDate = Calendar.getInstance();
+		newDate.setTimeInMillis(dateModified);
+		this.date = newDate;
 	}
 
 	public String getHtmlDescription() {
