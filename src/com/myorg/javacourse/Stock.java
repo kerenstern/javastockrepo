@@ -8,6 +8,7 @@ public class Stock {
 	private float bid;	
 	private java.util.Calendar date;
 	private String DateToStr;
+	SimpleDateFormat dateFormat = new SimpleDateFormat("MM/dd/yyyy");
 	
 	public Stock(String symbol, float ask, float bid, Long dateModified) {
 		setSymbol(symbol);
@@ -41,7 +42,6 @@ public class Stock {
 	}
 
 	public String getDate() {
-		SimpleDateFormat dateFormat = new SimpleDateFormat("MM/dd/yyyy");
 		DateToStr = dateFormat.format(this.date.getTime());
 		return DateToStr;
 	}
