@@ -22,7 +22,7 @@ public class Portfolio {
 
 	// Setters
 	public void addStocks(Stock Stock) {
-		if (portfolioSize <= MAX_PORTFOLIO_SIZE) {
+		if (portfolioSize < MAX_PORTFOLIO_SIZE) {
 			stocks[portfolioSize] = Stock;
 			portfolioSize++;
 		}
