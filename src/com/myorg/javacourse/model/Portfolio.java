@@ -22,10 +22,12 @@ public class Portfolio {
 
 	// Setters
 	public void addStocks(Stock Stock) {
-		stocks[portfolioSize] = Stock;
-		portfolioSize++;
+		if (portfolioSize <= MAX_PORTFOLIO_SIZE) {
+			stocks[portfolioSize] = Stock;
+			portfolioSize++;
+		}
 	}
-	
+
 	public void setTitle(String title) {
 		this.title = title;
 	}
@@ -35,13 +37,12 @@ public class Portfolio {
 	public String getTitle() {
 		return title;
 	}
-	
-//	Do I have to use this in getHtmlString?	
+
 	public Stock[] getStocks() {
 		return stocks;
 	}
 
-	public String getHtmlString() {		
+	public String getHtmlString() {
 		String portfolioHtml = "<h1>" + getTitle() + "</h1>";
 		for (int i = 0; i < portfolioSize; i++) {
 			portfolioHtml += stocks[i].getHtmlDescription() + "<br>";
