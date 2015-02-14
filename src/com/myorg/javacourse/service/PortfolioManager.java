@@ -6,11 +6,13 @@ import com.myorg.javacourse.model.Portfolio;
 public class PortfolioManager {
 
 	public Portfolio portfolio;
+	String portfolioTitle = "My Portfolio";
+	
 	public Portfolio getPortfolio() {
 				
 		Portfolio portfolio = new Portfolio();
 		
-		String portfolioTitle = "A Very Descriptively Named Stock Portfolio";
+		String portfolioTitle = "Portfolio1";
 		portfolio.setTitle(portfolioTitle);
 		
 		String symbol1 = "PIH";
@@ -19,7 +21,7 @@ public class PortfolioManager {
 		Long date1 = 1416002400000L;
 		
 		Stock PIHStock = new Stock(symbol1, ask1, bid1, date1);
-		portfolio.addStocks(PIHStock);
+		portfolio.addStock(PIHStock);
 		
 		String symbol2 = "AAL";
 		Float ask2 = (float) 5.78;
@@ -27,7 +29,7 @@ public class PortfolioManager {
 		Long date2 = 1416002400000L;	
 		
 		Stock AALStock = new Stock(symbol2, ask2, bid2, date2);
-		portfolio.addStocks(AALStock);
+		portfolio.addStock(AALStock);
 		
 		String symbol3 = "CAAS";
 		Float ask3 = (float) 32.2;
@@ -36,10 +38,19 @@ public class PortfolioManager {
 		
 		Stock CAASStock = new Stock(symbol3, ask3, bid3, date3);
 		
-		portfolio.addStocks(CAASStock);
+		portfolio.addStock(CAASStock);
 		
 		return portfolio;
 		
+	}
+	public Portfolio copyPortfolio(Portfolio portfolio) {
+		Portfolio copyPortfolio = new Portfolio(portfolio);
+		return copyPortfolio;
+	}
+	
+	public Portfolio copyPortfolio(Portfolio portfolio, String title) {
+		Portfolio copyPortfolio = new Portfolio(portfolio, title);
+		return copyPortfolio;
 	}
 
 }
