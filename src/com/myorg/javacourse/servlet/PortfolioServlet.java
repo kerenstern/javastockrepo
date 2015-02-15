@@ -1,4 +1,4 @@
-package com.myorg.javacourse.stock.servlet;
+package com.myorg.javacourse.servlet;
 
 import java.io.IOException;
 
@@ -24,26 +24,27 @@ public class PortfolioServlet extends HttpServlet {
 		
 		PortfolioManager portfolioManager = new PortfolioManager();
 		
+		// Defines portfolio 1
 		Portfolio portfolio1 = portfolioManager.getPortfolio();
 		resp.getWriter().println(portfolio1.getHtmlString());
 		
+		//Returns a copy of portfolio1 with a new title and sets it to portfolio2
 		String portfolio2Title = "Portfolio 2";
 		Portfolio portfolio2 = portfolioManager.copyPortfolio(portfolio1, portfolio2Title);		
 		resp.getWriter().println(portfolio2.getHtmlString());
 			
+//		Removes first stock from portfolio1
 		int removeStockIndex = 0;
 		portfolio1.removeStock(removeStockIndex);
-		resp.getWriter().println(portfolio1.getHtmlString());
-		
+		resp.getWriter().println(portfolio1.getHtmlString());		
 		resp.getWriter().println(portfolio2.getHtmlString());
 		
+//		Changes bid of last stock in portfolio2
 		int portfolio2LastBidIndex = portfolio2.getPortfolioSize() - 1;
 		float newBid = 55.55f;
 		portfolio2.setNewBid(portfolio2LastBidIndex, newBid);
 		
 		resp.getWriter().println(portfolio1.getHtmlString());
 		resp.getWriter().println(portfolio2.getHtmlString());
-		
 	}
-
 }

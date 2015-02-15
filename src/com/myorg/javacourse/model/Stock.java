@@ -1,8 +1,13 @@
-package com.myorg.javacourse;
+package com.myorg.javacourse.model;
 import java.text.SimpleDateFormat;
 import java.util.Calendar;
-import java.util.Date;
 
+/**
+ * Stock model
+ * 
+ * @author Keren
+ *
+ */
 public class Stock {
 	private String symbol;
 	private float ask;
@@ -12,18 +17,36 @@ public class Stock {
 	Calendar newDate = Calendar.getInstance();
 	private long date;
 	
+
+	// ******************
+    //	Constructors
+	// ******************
+	
 	public Stock() {
 		this("", 0, 0, System.currentTimeMillis());
 	}
 	
+	/**
+	 * @param stock
+	 */
 	public Stock(Stock stock) {
 		this(stock.getSymbol(), stock.getAsk(), stock.getBid(), stock.getDate());
 	}
 	
+	/**
+	 * @param stock
+	 * @param bid
+	 */
 	public Stock(Stock stock, float bid) {
 		this(stock.getSymbol(), stock.getAsk(), bid, stock.getDate());
 	}
 
+	/**
+	 * @param symbol
+	 * @param ask
+	 * @param bid
+	 * @param dateModified
+	 */
 	public Stock(String symbol, float ask, float bid, Long dateModified) {
 		setSymbol(symbol);
 		setAsk(ask);
@@ -32,38 +55,49 @@ public class Stock {
 	}
 	
 
-	private String getSymbol() {
-		return symbol;
-	}
-
+	// ******************
+    //	Setters
+	// ******************
+	
 	private void setSymbol(String symbol) {
 		this.symbol = symbol;
+	}
+	
+	private void setAsk(float ask) {
+		this.ask = ask;
+	}
+	
+	private void setBid(float bid) {
+		this.bid = bid;
+	}
+	
+	public void setDate(Long dateInMills) {
+		this.date = dateInMills;
+	}
+
+	// ******************
+    //	Getters
+	// ******************
+
+	private String getSymbol() {
+		return symbol;
 	}
 
 	private float getAsk() {
 		return ask;
 	}
 
-	private void setAsk(float ask) {
-		this.ask = ask;
-	}
-
 	private float getBid() {
 		return bid;
-	}
-
-	private void setBid(float bid) {
-		this.bid = bid;
 	}
 
 	public long getDate() {
 		return date;
 	}
-
-	public void setDate(Long dateInMills) {
-		this.date = dateInMills;
-	}
 	
+	/**
+	 * Format date according to calendar SimpleDateFormat("MM/dd/yyyy");
+	 */
 	public String getFormattedDate() {
 		newDate.setTimeInMillis(this.date);
 		DateToStr = dateFormat.format(newDate.getTime());
