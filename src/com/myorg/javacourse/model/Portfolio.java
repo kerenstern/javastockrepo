@@ -1,5 +1,5 @@
 package com.myorg.javacourse.model;
-
+ 
 /**
  * Portfolio Class
  * Creates and holds an array of stocks
@@ -30,8 +30,13 @@ public class Portfolio {
 	 * Creates new empty stock array
 	 */
 	public Portfolio() {
+		this("Portfolio");
+	}
+	
+	public Portfolio(String title) {
 		Stock[] stocks = new Stock[MAX_PORTFOLIO_SIZE];
 		setStocks(stocks);
+		setTitle(title);
 	}
 
 	/**
@@ -54,12 +59,11 @@ public class Portfolio {
 	 * @param title
 	 * @param stocksToCopy
 	 * @param numberOfStocks
-	 * 
+	 * Copies portfolio
 	 * Runs over stocksToCopy array and adds to Stock array
 	 */
 	public Portfolio(String title, Stock[] stocksToCopy, int numberOfStocks) {
-		this();
-		setTitle(title);
+		this(title);
 		for (int i = 0; i < numberOfStocks; i++) {
 			Stock stockToCopy = new Stock(stocksToCopy[i]);
 			addStock(stockToCopy);
