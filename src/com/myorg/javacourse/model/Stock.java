@@ -2,6 +2,8 @@ package com.myorg.javacourse.model;
 import java.text.SimpleDateFormat;
 import java.util.Calendar;
 
+import com.myorg.javacourse.model.Portfolio.ALGO_RECOMMENDATION;
+
 /**
  * Stock model
  * 
@@ -12,16 +14,20 @@ public class Stock {
 	private String symbol;
 	private float ask;
 	private float bid;	
+	
+//	Date format
 	private String DateToStr;
 	static SimpleDateFormat dateFormat = new SimpleDateFormat("MM/dd/yyyy");
 	Calendar newDate = Calendar.getInstance();
 	private long date;
 	
-
+	private ALGO_RECOMMENDATION recommendation;
+	private int stockQuantity;
+	
 	// ******************
     //	Constructors
 	// ******************
-	
+
 	public Stock() {
 		this("", 0, 0, System.currentTimeMillis());
 	}
@@ -75,24 +81,36 @@ public class Stock {
 		this.date = dateInMills;
 	}
 
+	public void setStockQuantity(int stockQuantity) {
+		this.stockQuantity = stockQuantity;
+	}
+	public void updateStockQuantity(int stockQuantity) {
+		stockQuantity = this.getStockQuantity() + stockQuantity;
+		setStockQuantity(stockQuantity);
+	}
+
 	// ******************
     //	Getters
 	// ******************
 
-	private String getSymbol() {
+	String getSymbol() {
 		return symbol;
 	}
 
-	private float getAsk() {
+	public float getAsk() {
 		return ask;
 	}
 
-	private float getBid() {
+	public float getBid() {
 		return bid;
 	}
 
 	public long getDate() {
 		return date;
+	}
+	
+	public int getStockQuantity() {
+		return stockQuantity;
 	}
 	
 	/**
@@ -110,6 +128,8 @@ public class Stock {
 		stockHtmlDetailsString += ", <b>ask</b>: " + getAsk();
 		stockHtmlDetailsString += ", <b>bid</b>: " + getBid();
 		stockHtmlDetailsString += ", <b>date</b>: " + getFormattedDate();
+		stockHtmlDetailsString += ", <b>quantity</b>: " + getStockQuantity();
+
 
 		return stockHtmlDetailsString;
 	}
