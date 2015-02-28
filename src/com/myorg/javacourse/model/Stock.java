@@ -84,6 +84,12 @@ public class Stock {
 	public void setStockQuantity(int stockQuantity) {
 		this.stockQuantity = stockQuantity;
 	}
+
+	/**
+	 * @param stockQuantity
+	 * 
+	 * Updates number of stocks in portfolio (can be negative)
+	 */
 	public void updateStockQuantity(int stockQuantity) {
 		stockQuantity = this.getStockQuantity() + stockQuantity;
 		setStockQuantity(stockQuantity);
